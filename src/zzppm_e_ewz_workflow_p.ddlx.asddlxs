@@ -1,0 +1,28 @@
+@Metadata.layer: #CUSTOMER
+annotate view zzppm_c_ewz_workflow_p with
+{
+
+  @UI.hidden: true
+  @UI.lineItem: [{ exclude: true }]
+  wfid;
+
+  @UI.hidden: true
+  @UI.lineItem: [{ exclude: true }]
+  wfpos;
+
+  @UI.selectionField: [{ position: 10 }]
+  @UI.lineItem: [{ position: 10 }]
+  @UI.identification: [{ position: 10 }]
+  decision;
+
+  @UI.selectionField: [{ position: 20 }]
+  @UI.lineItem: [{ position: 20 }]
+  @UI.identification: [{ position: 20 }]
+  reason;
+
+  @UI.selectionField: [{ position: 30 }]
+  @UI.lineItem: [{ position: 30 }]
+  @UI.identification: [{ position: 30 }]
+  decider;
+
+}

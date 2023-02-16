@@ -1,0 +1,189 @@
+@Metadata.layer: #CUSTOMER
+
+  //List Report: Multiple View - add selectionVariat
+
+//@UI.selectionVariant: [{ qualifier: 'All', text: 'Meine Projekt', filter: 'GesamtCrytical EQ "*"'},
+//                       { qualifier: 'Green', text: 'Favoriten', filter: 'GesamtCrytical EQ 3' },
+//                       { qualifier: 'Yellow', text: 'Aktive Projekte', filter: 'GesamtCrytical EQ 2' },
+//                       { qualifier: 'Red1', text: 'HERMES Projekte', filter: 'GesamtCrytical EQ "*"'},
+//                       { qualifier: 'Red2', text: 'Agile Projekte', filter: 'GesamtCrytical EQ "*"'},
+//                       { qualifier: 'Red3', text: 'SIA Light Projekte', filter: 'GesamtCrytical EQ "*"'}]
+//
+//@UI.badge: {
+//    title: {
+//        label: 'bezeichnung',
+//        value: 'bezeichnung' //-- Reference to element in projection-list
+//    },
+//    headLine: {
+//        label: 'nummer',
+//        value: 'nummer' //-- Reference to element in projection-list
+//    },
+//    mainInfo: {
+//        label: 'Manager',
+//        value: 'Manager' //-- Reference to element in projection-list
+//    },
+//    secondaryInfo: {
+//        label: 'Gesamt',
+//        value: 'Gesamt' //-- Reference to element in projection-list
+//    }
+//}
+
+annotate view ZZPPM_C_EWZ_HEADER with
+{
+
+
+  @UI.facet: [
+             { id:              'HeaderFacet',
+               purpose:         #HEADER,
+               type:            #FIELDGROUP_REFERENCE,
+               label:           'Projektkopf',
+               targetQualifier: 'HeaderItems', // Refers to lineItems with @UI.fieldGroup: [{qualifier: 'Fieldgroup:HeaderItems'}]
+               position:         10 
+             },
+                              
+             { id:              'LightsFacet',
+               type:            #FIELDGROUP_REFERENCE,
+               label:           'Ampeldaten',
+               targetQualifier: 'Lights',
+               position:         20 
+             },
+             
+            
+//           Meilensteine Tabelle    
+             { id:              'MilestoneFacet',
+               type:            #LINEITEM_REFERENCE, // Facet shows the referenced items in a list report
+               label:           'Finanzen',
+//               targetQualifier: 'Facet2',
+               position:         20,
+               targetElement:   '_toMilestone'},
+
+//           Finanzen Tabelle    
+             { id:              'FinanceFacet',
+               type:            #LINEITEM_REFERENCE, // Facet shows the referenced items in a list report
+               label:           'Finanzen',
+               position:         30,
+               targetElement:   '_toFinance'},
+             
+//           Finanzen Chart  
+             { id:              'ChartFacet', 
+               purpose:         #STANDARD,
+               type:            #CHART_REFERENCE,
+               label:           'Finance Chart',
+               targetElement:   '_toFinance', 
+               targetQualifier: 'ChartFacetFinance',
+               position:        40            
+             }        
+  ]
+  
+
+
+  @UI.hidden: true
+  @UI.lineItem: [{ exclude: true }]
+  guid;
+
+  @Search.defaultSearchElement: true
+  @Search.ranking: #HIGH
+  @Search.fuzzinessThreshold: 0.5
+    @UI: { lineItem:       [ { position: 10,
+                             importance: #HIGH } ],
+         identification: [ { position: 10 } ],
+         selectionField: [ { position: 10 } ],
+         fieldGroup:     [ { qualifier: 'HeaderItems', 
+                            position: 10 } ] }
+  nummer;
+
+  @Search.fuzzinessThreshold: 0.5
+
+    @UI: { lineItem:       [ { position: 20,
+                             importance: #HIGH, 
+                             type: #WITH_URL, url: 'url' } ],
+           identification: [ { position: 20, 
+                               type: #AS_ADDRESS } ],
+           selectionField: [ { position: 20 } ],
+           fieldGroup:     [ { qualifier: 'HeaderItems', 
+                               position: 20 } ] }
+  
+  bezeichnung;
+
+
+    @UI: { lineItem:       [ { position: 30,
+                             importance: #MEDIUM } ],
+         identification: [ { position: 30 } ],
+         selectionField: [ { position: 30 } ],
+         fieldGroup:     [ { qualifier: 'HeaderItems', 
+                            position: 30 } ] }
+  Manager;
+
+  @UI.lineItem: [{ position: 40, label: 'Gesamt Status', criticality: 'GesamtCrytical', importance: #HIGH }]
+  //  @UI.dataPoint.description: 'Gesamt'
+  Gesamt;
+
+  @UI.hidden: true
+  GesamtCrytical;
+
+  @UI.lineItem: [{ position: 50, label: 'Finanzen', criticality: 'Finanzen', importance: #LOW }]
+  @UI.fieldGroup: [{ qualifier: 'Lights', position: 30, label: 'Finanzen', criticality: 'Finanzen', importance: #LOW }]
+  Finanzen;
+
+  @UI.lineItem: [{ position: 60, label: 'Termin', criticality: 'Termin', importance: #LOW }]
+  @UI.fieldGroup: [{ qualifier: 'Lights', position: 40, label: 'Termin', criticality: 'Termin', importance: #LOW }]
+  Termin;
+
+  @UI.lineItem: [{ position: 70, label: 'Umfang', criticality: 'Umfang', importance: #LOW }]
+  @UI.fieldGroup: [{ qualifier: 'Lights', position: 50, label: 'Umfang', criticality: 'Umfang', importance: #LOW }]
+  Umfang;
+
+  @UI.lineItem: [{ position: 80, label: 'PPI', criticality: 'PPI', importance: #LOW }]
+  @UI.fieldGroup: [{ qualifier: 'Lights', position: 60, label: 'PPI', criticality: 'PPI', importance: #LOW }]
+  PPI;
+
+  @UI.lineItem: [{ position: 90 }]
+  @UI.identification: [{ position:  90 }]
+  @UI.selectionField: [{ position: 20 }]
+  @UI: { 
+         fieldGroup:     [ { qualifier: 'Lights', 
+                            position: 10 } ] }  
+  start_d;
+
+  @UI.lineItem: [{ position: 100 }]
+  @UI.identification: [{ position:  100 }]
+  @UI.selectionField: [{ position: 30 }]
+  @UI: { 
+         fieldGroup:     [ { qualifier: 'Lights', 
+                            position: 20 } ] }    
+  ende_d;
+
+  //  @UI.lineItem: [{ position: 1, iconUrl: 'imageurl', url: 'imageurl' }]
+  //  Favorit;
+
+  @UI.hidden: true
+  @UI.lineItem: [{ exclude: true }]
+  iconurl;
+
+  @UI.hidden: true
+  @UI.lineItem: [{ exclude: true }]
+  imageurl;
+  @UI.hidden: true
+  @UI.lineItem: [{ exclude: true }]
+  imageewz;
+
+  //  @UI:{ lineItem: [{ position: 100 , type: #AS_CHART, label: 'Progress' }]}
+  //  @UI.dataPoint: { targetValueElement: 'progress', visualization: #PROGRESS, minimumValue: 10, maximumValue: 100 }
+  //  @UI.identification: [{ position: 200, type: #AS_DATAPOINT }]
+  //  @UI.dataPoint: { title: 'Unrestricted Stock' ,
+  //                    targetValueElement: 'progress' ,
+  //                    minimumValue: 0 ,
+  //                    maximumValue: 2500
+  //                  }
+  //  progress;
+
+  //  @UI.masked
+  //  @UI.identification: [{ position: 200 }]
+  //  password;
+
+  @UI.multiLineText: true
+  @UI.identification: [{ position: 300 }]
+  notiz;
+  
+
+}

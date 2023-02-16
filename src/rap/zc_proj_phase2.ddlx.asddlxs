@@ -1,0 +1,65 @@
+@Metadata.layer: #PARTNER
+annotate view ZC_PROJ_PHASE2 with
+{
+
+ @UI.facet: [
+ {
+                    id:              'Facet1',
+                    type:            #FIELDGROUP_REFERENCE,
+                    label:           'Phase Data',
+                    targetQualifier: 'Fieldgroup:PhaseFields',
+                    position:        10 }
+]
+
+
+  @UI.hidden: true
+  Headerguid;
+
+  @UI.hidden: true
+  Guid;
+
+
+  @UI: { lineItem: [{ position: 10 }],
+         identification: [{ position:  10 }]
+
+  }
+  Icon;
+
+
+  @UI: { lineItem: [{ position: 20 }],
+         identification: [{ position:  20 }],
+         fieldGroup: [{qualifier: 'Fieldgroup:PhaseFields' }]
+
+  }
+  Phase;
+
+  @UI: { lineItem: [{ position: 30 }],
+         identification: [{ position:  30 }],
+         fieldGroup: [{qualifier: 'Fieldgroup:PhaseFields' }]
+
+  }
+  Description;
+
+  @UI: { lineItem: [{ position: 40 }],
+         identification: [{ position:  40 }],
+         fieldGroup: [{qualifier: 'Fieldgroup:PhaseFields' }]
+
+  }
+  Status;
+
+  @UI: { lineItem: [{ position: 50 }],
+         identification: [{ position:  50 }],
+         fieldGroup: [{qualifier: 'Fieldgroup:PhaseFields' }]
+
+  }
+  PlanFinish;
+
+  @UI: { lineItem: [{ position: 60 }],
+         identification: [{ position:  60 }],
+         fieldGroup: [{qualifier: 'Fieldgroup:PhaseFields' }]
+
+  }
+  CurrFinish;
+
+
+}

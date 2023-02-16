@@ -1,0 +1,71 @@
+@Metadata.layer: #CUSTOMER
+
+
+annotate view ZZPPM_C_EWZ_FINANCE with
+{
+
+
+@UI.facet: [
+
+             { id:              'IdFinanceFacet',
+               type:            #FIELDGROUP_REFERENCE, // Facet shows the referenced items in a list report
+               label:           'Finanzen - Daten',
+               targetQualifier: 'FacetFinanzen',
+               position:         10},
+               
+             { id:              'IdFinanceFacet2',
+               type:            #IDENTIFICATION_REFERENCE, // Facet shows the referenced items in a list report
+               label:           'Finanzen - Daten',
+               position:         10},
+                              
+             { id:              'IdToInvoice',
+               type:            #LINEITEM_REFERENCE, // Facet shows the referenced items in a list report
+               label:           'Rechnungen',
+//               targetQualifier: 'IdToInvoice',
+               position:         30,
+               targetElement:   '_toInvoice'}
+ ]
+ 
+
+  @UI.hidden: true
+  @UI.lineItem: [{ exclude: true }]
+  guid;
+
+  @UI.hidden: true
+  @UI.lineItem: [{ exclude: true }]
+  headerguid;
+
+  @UI.lineItem: [{ position: 10, importance: #HIGH }]
+  @UI.identification: [{ position: 10 }]
+  @UI.fieldGroup:     [ { qualifier: 'FacetFinanzen', position: 10 } ]  
+  gjahr;
+
+  @UI.lineItem: [{ position: 20, importance: #HIGH, label: 'Kredit' }]
+  @UI.identification: [{ position: 20 }]
+  @UI.fieldGroup:     [ { qualifier: 'FacetFinanzen', position: 20 } ] 
+  kredit;
+  
+  @UI.lineItem: [{ position: 20, importance: #HIGH, label: 'KreditW' }]
+  kredit_w;
+
+
+  @UI.lineItem: [{ position: 30, importance: #MEDIUM, label: 'Forecast' }]
+  @UI.identification: [{ position: 30 }]
+  forecast;
+  @UI.lineItem: [{ position: 40, importance: #MEDIUM, label: 'ForecastW' }]
+  forecast_w;
+
+  @UI.lineItem: [{ position: 50, importance: #LOW, label: 'Obligo' }]
+  @UI.identification: [{ position: 50 }]
+  obligo;
+  @UI.lineItem: [{ position: 60, importance: #LOW, label: 'ObligoW' }]
+  obligo_w;
+
+  @UI.lineItem: [{ position: 70, label: 'Ist Kosten', importance: #LOW }]
+  @UI.fieldGroup: [{ position: 70, importance: #LOW, label: 'IstKosten' }]
+  @UI.identification: [{ position: 70 }]
+  istkosten;
+  @UI.lineItem: [{ position: 80, label: 'Ist Kosten WAERS', importance: #LOW }]
+  @UI.fieldGroup: [{ position: 80, importance: #LOW, label: 'IstKostenW' }]
+  istkosten_w;
+}

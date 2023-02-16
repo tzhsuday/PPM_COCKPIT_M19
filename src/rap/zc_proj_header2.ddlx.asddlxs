@@ -1,0 +1,179 @@
+@Metadata.layer: #PARTNER
+
+
+@UI: {
+  headerInfo: { typeName: 'Header',
+                typeNamePlural: 'Headers',
+                title: { type: #STANDARD, label: 'Header', value: 'Bezeichnung' } },
+  presentationVariant: [{ sortOrder: [{ by: 'Nummer', direction:  #ASC }], visualizations: [{type: #AS_LINEITEM}] }] }
+
+annotate view ZC_PROJ_HEADER2
+    with 
+{
+
+
+ @UI.facet: [
+ {
+                    id:              'Facet1-ID',
+                    type:            #COLLECTION,
+                    label:           'Header Data',
+                    position:        10 },
+
+                 {
+                    id:              'FinanceFacet',
+                    purpose:         #STANDARD,
+                    type:            #LINEITEM_REFERENCE,
+                    label:           'Finance Data',
+                    position:        20,
+                    targetElement:   '_Finance' },
+
+                 {
+                    id:              'PhaseFacet',
+                    purpose:         #STANDARD,
+                    type:            #LINEITEM_REFERENCE,
+                    label:           'Phasen',
+                    position:        30,
+                    targetElement:   '_Phase' },
+
+                 {
+                    id:              'StatusFacet',
+                    purpose:         #STANDARD,
+                    type:            #LINEITEM_REFERENCE,
+                    label:           'Status',
+                    position:        40,
+                    targetElement:   '_Status' },
+
+                 {
+                    id:              'Fieldgroup1-ID',
+                    type:            #FIELDGROUP_REFERENCE,
+                    label:           'Projektkopfdaten',
+                    parentId:        'Facet1-ID',
+                    targetQualifier: 'Fieldgroup:HeaderFields',
+                    position:        10 },
+
+
+
+                 {
+                    id:              'Fieldgroup2-ID',
+                    type:            #FIELDGROUP_REFERENCE,
+                    label:           'Status',
+                    parentId:        'Facet1-ID',
+                    targetQualifier: 'Fieldgroup:HeaderFields2',
+                    position:        20 },
+
+
+
+                 {
+                    id:              'Fieldgroup3-ID',
+                    type:            #FIELDGROUP_REFERENCE,
+                    label:           'Finanzen',
+                    parentId:        'Facet1-ID',
+                    targetQualifier: 'Fieldgroup:HeaderFields3',
+                    position:        20 }
+
+
+
+              ]
+              
+    @UI.hidden: true
+    Guid;
+    
+    @UI: { lineItem: [{ position: 10 }],
+           identification: [{ position:  10 }],
+           fieldGroup:     [ { position: 10, qualifier: 'Fieldgroup:HeaderFields' }] 
+    
+    }
+    Nummer;
+        
+    @UI: { lineItem: [{ position: 20 }],
+           identification: [{ position:  20 }],
+           fieldGroup:     [ { position: 10, qualifier: 'Fieldgroup:HeaderFields' }]
+    
+    }
+    Bezeichnung;
+        
+    @UI: { lineItem: [{ position: 30 }],
+           identification: [{ position:  30 }],
+           fieldGroup:     [ { position: 10, qualifier: 'Fieldgroup:HeaderFields' }]
+
+    
+    }
+    Manager;
+        
+    @UI: { lineItem: [{ position: 40, criticality: 'Gesamt' }],
+           identification: [{ position:  40 }],
+           fieldGroup:     [ { position: 10, criticality: 'Gesamt', qualifier: 'Fieldgroup:HeaderFields2' }] 
+    
+    }
+    Gesamt;
+        
+    @UI: { lineItem: [{ position: 50, criticality: 'FinanzenCriticality'}],
+           identification: [{ position:  50 }],
+           fieldGroup:     [ { position: 10, criticality: 'Finanzen', criticalityRepresentation: #WITHOUT_ICON, qualifier: 'Fieldgroup:HeaderFields2' }] 
+    
+    }
+    Finanzen;
+        
+    @UI: { lineItem: [{ position: 60,  criticality: 'Termin' }],
+           identification: [{ position:  60 }],
+           fieldGroup:     [ { position: 10,  criticality: 'Termin', qualifier: 'Fieldgroup:HeaderFields2' }] 
+    
+    }
+    Termin;
+        
+    @UI: { lineItem: [{ position: 70, criticality: 'Umfang' }],
+           identification: [{ position:  70 }],
+           fieldGroup:     [ { position: 10, criticality: 'Umfang', qualifier: 'Fieldgroup:HeaderFields2' }] 
+    
+    }
+    Umfang;
+        
+    @UI: { lineItem: [{ position: 80, criticality: 'PPI' }],
+           identification: [{ position:  80 }],
+           fieldGroup:     [ { position: 10, label: 'Project Performance Index', criticality: 'PPI', qualifier: 'Fieldgroup:HeaderFields2' }] 
+    
+    }
+    Ppi;
+        
+    @UI: { lineItem: [{ position: 90 }],
+           identification: [{ position:  90 }],
+           fieldGroup:     [ { position: 10, qualifier: 'Fieldgroup:HeaderFields' }] 
+    
+    }
+    StartD;
+        
+    @UI: { lineItem: [{ position: 100 }],
+           identification: [{ position:  100 }],
+           fieldGroup:     [ { position: 10, qualifier: 'Fieldgroup:HeaderFields' }] 
+    
+    }
+    EndeD;
+    
+      @UI.hidden: true
+    Favorit;
+    @UI: { lineItem: [{ position: 110 }],
+           identification: [{ position:  110 }]
+    
+    }
+    PlanKost;
+    @UI: { lineItem: [{ position: 120 }],
+           identification: [{ position:  120 }],
+           fieldGroup:     [ { position: 10, qualifier: 'Fieldgroup:HeaderFields2' }] 
+    
+    }    
+    IstKost;
+      @UI.hidden: true
+    Waers;
+    
+    @UI: { fieldGroup:     [ { position: 10, qualifier: 'Fieldgroup:HeaderFields' }],
+            multiLineText: true  
+    
+    }    
+                     
+    Programm;
+      @UI.hidden: true
+    Projektart;
+      @UI.hidden: true
+    Portfolio;
+    
+}

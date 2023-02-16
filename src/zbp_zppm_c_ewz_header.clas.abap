@@ -1,0 +1,5 @@
+CLASS zbp_zppm_c_ewz_header DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zzppm_c_ewz_header.
+ENDCLASS.
+
+CLASS zbp_zppm_c_ewz_header IMPLEMENTATION.
+ENDCLASS.

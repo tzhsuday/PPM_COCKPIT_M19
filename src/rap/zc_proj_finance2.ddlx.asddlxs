@@ -1,0 +1,135 @@
+@Metadata.layer: #PARTNER
+
+
+@UI: {
+  headerInfo: { typeName: 'Header',
+                typeNamePlural: 'Headers',
+                title: { type: #STANDARD, label: 'Header', value: 'Gjahr' } },
+  presentationVariant: [{ sortOrder: [{ by: 'Gjahr', direction:  #ASC }], visualizations: [{type: #AS_LINEITEM}] }] }
+
+annotate view ZC_PROJ_FINANCE2
+    with 
+{
+
+
+ @UI.facet: [
+ {
+                    id:              'Facet1-ID',
+                    type:            #COLLECTION,
+                    label:           'Header Data',
+                    position:        10 },
+
+                 {
+                    id:              'InvoiceFacet',
+                    purpose:         #STANDARD,
+                    type:            #LINEITEM_REFERENCE,
+                    label:           'Invoices',
+                    position:        20,
+                    targetElement:   '_Invoice' },
+
+
+                 {
+                    id:              'Fieldgroup1-ID',
+                    type:            #FIELDGROUP_REFERENCE,
+                    label:           'Projektkopfdaten',
+                    parentId:        'Facet1-ID',
+                    targetQualifier: 'Fieldgroup:HeaderFields',
+                    position:        10 },
+
+
+
+                 {
+                    id:              'Fieldgroup2-ID',
+                    type:            #FIELDGROUP_REFERENCE,
+                    label:           'Status',
+                    parentId:        'Facet1-ID',
+                    targetQualifier: 'Fieldgroup:HeaderFields2',
+                    position:        20 },
+
+
+
+                 {
+                    id:              'Fieldgroup3-ID',
+                    type:            #FIELDGROUP_REFERENCE,
+                    label:           'Finanzen',
+                    parentId:        'Facet1-ID',
+                    targetQualifier: 'Fieldgroup:HeaderFields3',
+                    position:        20 }
+
+
+
+              ]
+
+
+    @UI.hidden: true
+    Guid;
+    
+    @UI.hidden: true
+    Headerguid;
+    
+    @UI: { lineItem: [{ position: 10 }],
+           identification: [{ position:  10 }],
+           fieldGroup:     [ { position: 10, qualifier: 'Fieldgroup:HeaderFields' }] 
+    
+    }    
+    
+    Gjahr;
+    
+    @UI: { lineItem: [{ position: 30 }],
+           identification: [{ position:  30 }],
+           fieldGroup:     [ { position: 10, qualifier: 'Fieldgroup:HeaderFields' }] 
+    
+    }
+    Kredit;
+    
+    @UI: { lineItem: [{ position: 40 }],
+           identification: [{ position:  40 }],
+           fieldGroup:     [ { position: 10, qualifier: 'Fieldgroup:HeaderFields' }] 
+    
+    }
+    KreditW;
+    
+    @UI: { lineItem: [{ position: 50 }],
+           identification: [{ position:  50 }],
+           fieldGroup:     [ { position: 10, qualifier: 'Fieldgroup:HeaderFields' }] 
+    
+    }
+    Forecast;
+    
+    @UI: { lineItem: [{ position: 60 }],
+           identification: [{ position:  60 }],
+           fieldGroup:     [ { position: 10, qualifier: 'Fieldgroup:HeaderFields' }] 
+    
+    }
+    ForecastW;
+    
+    @UI: { lineItem: [{ position: 70 }],
+           identification: [{ position:  70 }],
+           fieldGroup:     [ { position: 10, qualifier: 'Fieldgroup:HeaderFields' }] 
+    
+    }
+    Obligo;
+    
+    @UI: { lineItem: [{ position: 80 }],
+           identification: [{ position:  80 }],
+           fieldGroup:     [ { position: 10, qualifier: 'Fieldgroup:HeaderFields' }] 
+    
+    }
+    ObligoW;
+    
+    @UI: { lineItem: [{ position: 90 }],
+           identification: [{ position:  90 }],
+           fieldGroup:     [ { position: 10, qualifier: 'Fieldgroup:HeaderFields' }] 
+    
+    }
+    Istkosten;
+    
+    @UI: { lineItem: [{ position: 100 }],
+           identification: [{ position:  100 }],
+           fieldGroup:     [ { position: 10, qualifier: 'Fieldgroup:HeaderFields' }] 
+    
+    }
+    IstkostenW;
+
+    
+}

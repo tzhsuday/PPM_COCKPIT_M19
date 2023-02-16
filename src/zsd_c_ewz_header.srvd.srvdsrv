@@ -1,0 +1,6 @@
+@EndUserText.label: 'PPM Header (Service Definition)'
+define service ZSD_C_EWZ_HEADER {
+  expose ZZPPM_C_EWZ_HEADER;
+  expose ZZPPM_C_EWZ_FINANCE;
+  expose ZZPPM_C_EWZ_INVOICE;
+}

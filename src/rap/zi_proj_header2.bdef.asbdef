@@ -1,0 +1,147 @@
+managed implementation in class zbp_i_proj_header2 unique;
+
+define behavior for ZI_PROJ_HEADER2 alias header
+persistent table zzppm_ewz_001
+lock master
+//authorization master ( instance )
+//etag master <field_name>
+{
+
+  mapping for ZZPPM_EWZ_001
+  {
+    guid = Guid;
+    nummer = Nummer;
+    bezeichnung = Bezeichnung;
+    manager = Manager;
+    gesamt = Gesamt;
+    finanzen = Finanzen;
+    termin = Termin;
+    umfang = Umfang;
+    ppi = Ppi;
+    StartD = start_d;
+    EndeD = ende_d;
+    favorit = Favorit;
+    PlanKost = plan_kost;
+    IstKost = ist_kost;
+    waers = Waers;
+    programm = Programm;
+    projektart = Projektart;
+    portfolio = Portfolio;
+  }
+
+  field ( numbering : managed, readonly ) Guid;
+  create;
+  update;
+  delete;
+  association _Finance { create; }
+  association _Phase { create; }
+  association _Status { create; }
+}
+
+define behavior for ZI_PROJ_FINANCE2 alias finance
+persistent table zzppm_ewz_002
+lock dependent by _Header
+//authorization dependent by <association>
+//etag master <field_name>
+{
+
+  mapping for ZZPPM_EWZ_002
+  {
+    guid = Guid;
+    headerguid = Headerguid;
+    gjahr = Gjahr;
+    kredit = Kredit;
+    KreditW = kredit_w;
+    forecast = Forecast;
+    ForecastW = forecast_w;
+    obligo = Obligo;
+    ObligoW = obligo_w;
+    istkosten = Istkosten;
+    IstkostenW = istkosten_w;
+  }
+
+  field ( readonly : update ) Headerguid;
+  field ( numbering : managed, readonly ) Guid;
+
+  update;
+  delete;
+  association _Invoice { create; }
+  association _Header;
+}
+
+define behavior for ZI_PROJ_INVOICE2 alias invoice
+persistent table zzppm_ewz_003
+lock dependent by _Header
+//authorization dependent by <association>
+//etag master <field_name>
+{
+
+  mapping for ZZPPM_EWZ_003
+  {
+    guid = Guid;
+    headerguid = Headerguid;
+    Financeguid = financeguid;
+  }
+
+  field ( readonly : update ) Headerguid, Financeguid;
+  field ( numbering : managed, readonly ) Guid;
+
+  update;
+  delete;
+  association _Finance;
+  association _Header;
+}
+
+define behavior for ZI_PROJ_PHASE2 alias phase
+persistent table zzppm_ewz_004
+lock dependent by _Header
+//authorization dependent by <association>
+//etag master <field_name>
+{
+
+  mapping for ZZPPM_EWZ_004
+  {
+    guid = Guid;
+    headerguid = Headerguid;
+  }
+
+  field ( readonly : update ) Headerguid;
+  field ( numbering : managed, readonly ) Guid;
+
+  update;
+  delete;
+
+  association _Header;
+}
+
+define behavior for ZI_PROJ_STATUS2 alias status
+persistent table zzppm_ewz_006
+lock dependent by _Header
+//authorization dependent by <association>
+//etag master <field_name>
+{
+
+  mapping for ZZPPM_EWZ_006
+  {
+    Guid = guid;
+    headerguid = headerguid;
+    StatusDate = status_date;
+    finanzen = finanzen;
+    termin = termin;
+    umfang = umfang;
+    ppi = ppi;
+    description = description;
+  }
+
+  field ( readonly : update ) headerguid;
+  field ( numbering : managed, readonly ) Guid;
+  field ( mandatory ) Description, Umfang, Termin, StatusDate;
+  field ( features : instance ) StatusDate;
+
+  validation validatestatus on save { field Description; create; update; }
+
+  update;
+  delete;
+
+  association _Header;
+}

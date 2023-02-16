@@ -1,0 +1,53 @@
+@Metadata.layer: #CUSTOMER
+
+annotate view ZZPPM_C_EWZ_INVOICE with
+{
+@UI.facet: [
+             { id:              'FinanceFacet',
+               type:            #IDENTIFICATION_REFERENCE, // Facet shows the referenced items in a list report
+               label:           'Finanzen - Daten',
+//               targetQualifier: 'Facet_Finanzen',
+               position:         10}
+
+ ]
+  @UI.hidden: true
+  @UI.lineItem: [{ exclude: true }]
+  guid;
+  @UI.hidden: true
+  @UI.lineItem: [{ exclude: true }]
+  headerguid;
+  @UI.hidden: true
+  @UI.lineItem: [{ exclude: true }]
+  gjahr;
+  @UI.lineItem: [{ position: 20 }]
+  @UI.identification: [{ position: 20 }]
+  belnr;
+  @UI.lineItem: [{ position: 30 }]
+  @UI.identification: [{ position: 30 }]
+  bukrs;
+  @UI.lineItem: [{ position: 40 }]
+  @UI.identification: [{ position: 40 }]
+  blart;
+  //  @UI.lineItem: [{ position: 50 }]
+  //  @UI.identification: [{ position: 50 }]
+  //  bldat;
+  //  @UI.lineItem: [{ position: 60 }]
+  //  @UI.identification: [{ position: 60 }]
+  //  budat;
+  //  @UI.lineItem: [{ position: 70 }]
+  //  @UI.identification: [{ position: 70 }]
+  //  ebeln;
+  //  @UI.lineItem: [{ position: 80 }]
+  //  @UI.identification: [{ position: 80 }]
+  //  ebelp;
+  @UI.lineItem: [{ position: 90 }]
+  @UI.identification: [{ position: 90 }]
+  sgtxt;
+  @UI.lineItem: [{ position: 100 }]
+  @UI.identification: [{ position: 100 }]
+  dmbtr;
+  //  @UI.lineItem: [{ position: 110 }]
+  //  @UI.identification: [{ position: 110 }]
+  //  waers;
+
+}

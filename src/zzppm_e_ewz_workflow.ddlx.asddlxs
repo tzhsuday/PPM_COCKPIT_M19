@@ -1,0 +1,49 @@
+@Metadata.layer: #CUSTOMER
+
+@UI.selectionVariant: [{ qualifier: 'All', text: 'Alle Workflows', filter: 'status EQ "*"'},
+                       { qualifier: 'Green', text: 'Genehmigt', filter: 'status EQ "Genehmigt"' },
+                       { qualifier: 'Yellow', text: 'Offen', filter: 'status EQ "Offen"' },
+                       { qualifier: 'Red', text: 'Abgelehnt', filter: 'status EQ "Abgelehnt"'}]
+
+annotate view zzppm_c_ewz_workflow with
+{
+
+  @UI.facet: [{ label: 'Workflow Details', id: 'wfid', purpose: #STANDARD, parentId: 'GeneralInfo', type: #FIELDGROUP_REFERENCE, position: 30, targetQualifier: 'Ampeln'}]
+
+
+  @Consumption.semanticObject: 'bla'
+  //  @UI.selectionField: [{ position: 10 }]
+  @UI.lineItem: [{ position: 10 }, { semanticObjectAction: 'open'}]
+  @UI.identification: [{ position: 10 }]
+  wfid;
+
+  @UI.selectionField: [{ position: 20 }]
+  @UI.lineItem: [{ position: 20 }]
+  @UI.identification: [{ position: 20 }]
+  proj_id;
+
+  @UI.selectionField: [{ position: 30 }]
+  @UI.lineItem: [{ position: 30 }]
+  @UI.identification: [{ position: 30 }]
+  proj_bez;
+
+  @UI.selectionField: [{ position: 40 }]
+  @UI.lineItem: [{ position: 40 }]
+  @UI.identification: [{ position: 40 }]
+  proj_art;
+
+  //  @UI.selectionField: [{ position: 50 }]
+  @UI.lineItem: [{ position: 50 }]
+  @UI.identification: [{ position: 50 }]
+  entscheid_model;
+
+  @UI.selectionField: [{ position: 60 }]
+  @UI.lineItem: [{ position: 60 }]
+  @UI.identification: [{ position: 60 }]
+  status;
+
+  ///* Associations */
+  ////zzppm_c_ewz_workflow
+  //toPosition;
+
+}

@@ -1,0 +1,61 @@
+@Metadata.layer: #PARTNER
+annotate view ZC_PROJ_STATUS2 with
+{
+
+ @UI.facet: [
+ {
+                    id:              'Facet1',
+                    type:            #FIELDGROUP_REFERENCE,
+                    label:           'Status Data',
+                    targetQualifier: 'Fieldgroup:StatusFields',
+                    position:        10 }
+]
+
+  @UI.hidden:true
+  Guid;
+  @UI.hidden:true
+  Headerguid;
+
+  @UI: { lineItem: [{ position: 10 }],
+         identification: [{ position:  10 }]
+
+  }
+  StatusDate;
+
+  @UI: { lineItem: [{ position: 10 }],
+         identification: [{ position:  10 }],
+         fieldGroup: [{ qualifier: 'Fieldgroup:StatusFields' }]
+
+  }
+  Finanzen;
+
+  @UI: { lineItem: [{ position: 10 }],
+     identification: [{ position:  10 }],
+         fieldGroup: [{ qualifier: 'Fieldgroup:StatusFields' }]
+
+  }
+  Termin;
+
+  @UI: { lineItem: [{ position: 10 }],
+     identification: [{ position:  10 }],
+         fieldGroup: [{ qualifier: 'Fieldgroup:StatusFields' }]
+
+  }
+  Umfang;
+
+  @UI: { lineItem: [{ position: 10 }],
+     identification: [{ position:  10 }],
+         fieldGroup: [{ qualifier: 'Fieldgroup:StatusFields' }]
+
+  }
+  Ppi;
+
+  @UI: { lineItem: [{ position: 10 }],
+     identification: [{ position:  10 }],
+         fieldGroup: [{ qualifier: 'Fieldgroup:StatusFields' }]
+
+  }
+  Description;
+
+
+}

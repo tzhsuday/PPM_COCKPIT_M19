@@ -1,0 +1,8 @@
+@EndUserText.label: 'Service Definition Project Cockpit'
+define service ZSD_C_PROJ_COCKPIT2 {
+  expose ZC_PROJ_HEADER2;
+  expose ZC_PROJ_FINANCE2;
+  expose ZC_PROJ_INVOICE2;
+  expose ZC_PROJ_PHASE2;
+  expose ZC_PROJ_STATUS2;
+}
