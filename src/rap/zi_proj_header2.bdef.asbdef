@@ -1,11 +1,17 @@
 managed implementation in class zbp_i_proj_header2 unique;
-
+with draft;
 define behavior for ZI_PROJ_HEADER2 alias header
 persistent table zzppm_ewz_001
+draft table zzppm_ewz_001d
 lock master
-//authorization master ( instance )
-//etag master <field_name>
+total etag lastchangedon
+etag master lastchangedat
 {
+
+draft action Edit;
+draft action Activate;
+draft action Discard;
+draft action Resume;
 
   mapping for ZZPPM_EWZ_001
   {
@@ -27,22 +33,23 @@ lock master
     programm = Programm;
     projektart = Projektart;
     portfolio = Portfolio;
+    lastchangedon = lastchangedon;
+    lastchangedat = lastchangedat;
   }
 
   field ( numbering : managed, readonly ) Guid;
   create;
   update;
   delete;
-  association _Finance { create; }
-  association _Phase { create; }
-  association _Status { create; }
+  association _Finance { create; with draft; }
+  association _Phase { create; with draft; }
+  association _Status { create; with draft; }
 }
 
 define behavior for ZI_PROJ_FINANCE2 alias finance
 persistent table zzppm_ewz_002
+draft table zzppm_ewz_002d
 lock dependent by _Header
-//authorization dependent by <association>
-//etag master <field_name>
 {
 
   mapping for ZZPPM_EWZ_002
@@ -65,12 +72,13 @@ lock dependent by _Header
 
   update;
   delete;
-  association _Invoice { create; }
+  association _Invoice { create; with draft; }
   association _Header;
 }
 
 define behavior for ZI_PROJ_INVOICE2 alias invoice
 persistent table zzppm_ewz_003
+draft table zzppm_ewz_003d
 lock dependent by _Header
 //authorization dependent by <association>
 //etag master <field_name>
@@ -94,6 +102,7 @@ lock dependent by _Header
 
 define behavior for ZI_PROJ_PHASE2 alias phase
 persistent table zzppm_ewz_004
+draft table zzppm_ewz_004d
 lock dependent by _Header
 //authorization dependent by <association>
 //etag master <field_name>
@@ -116,6 +125,7 @@ lock dependent by _Header
 
 define behavior for ZI_PROJ_STATUS2 alias status
 persistent table zzppm_ewz_006
+draft table zzppm_ewz_006d
 lock dependent by _Header
 //authorization dependent by <association>
 //etag master <field_name>
@@ -138,7 +148,7 @@ lock dependent by _Header
   field ( mandatory ) Description, Umfang, Termin, StatusDate;
   field ( features : instance ) StatusDate;
 
-  validation validatestatus on save { field Description; create; update; }
+  validation validateStatusDate on save { field Description; create; update; }
 
   update;
   delete;

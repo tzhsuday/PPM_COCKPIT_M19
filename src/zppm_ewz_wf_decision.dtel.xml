@@ -15,8 +15,11 @@
     <SCRTEXT_S>Entscheid.</SCRTEXT_S>
     <SCRTEXT_M>Entscheidung</SCRTEXT_M>
     <SCRTEXT_L>Entscheidung</SCRTEXT_L>
+    <ACTFLAG>I</ACTFLAG>
     <DTELMASTER>D</DTELMASTER>
+    <RESERVEDTE>JB</RESERVEDTE>
     <REFKIND>D</REFKIND>
+    <ABAP_LANGUAGE_VERSION>5</ABAP_LANGUAGE_VERSION>
    </DD04V>
   </asx:values>
  </asx:abap>

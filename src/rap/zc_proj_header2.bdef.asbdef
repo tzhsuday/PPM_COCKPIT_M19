@@ -1,20 +1,20 @@
-projection;
-
+projection implementation in class zbp_c_proj_header2 unique;
+use draft;
 define behavior for ZC_PROJ_HEADER2 //alias <alias_name>
 {
   use create;
   use update;
   use delete;
 
-  use association _Finance { create; }
+  use association _Finance { }
   use association _Phase { create; }
   use association _Status { create; }
 }
 
 define behavior for ZC_PROJ_FINANCE2 //alias <alias_name>
 {
-  use update;
-  use delete;
+//  use update;
+//  use delete;
 
   use association _Invoice { create; }
   use association _Header;

@@ -1,35 +1,4 @@
-managed implementation in class zbp_zppm_c_ewz_header unique;
-
-define behavior for ZZPPM_C_EWZ_HEADER alias Header
-persistent table zzppm_ewz_001
-lock master
-authorization master ( instance )
-//etag master
-{
-  create;
-  update;
-  delete;
-
-  field ( numbering : managed, readonly ) guid;
-  field ( mandatory ) bezeichnung, Manager, Gesamt;
-  field ( readonly ) programm;
-
-  mapping for zzppm_ewz_001
+unmanaged;
+define behavior for ZZPPM_C_EWZ_HEADER
   {
-    Finanzen = finanzen;
-    Gesamt = gesamt;
-    Manager = manager;
-    ppi = ppi;
-    Termin = termin;
-    Umfang = umfang;
-    bezeichnung = bezeichnung;
-    ende_d = ende_d;
-    start_d = start_d;
-    plan_kost = plan_kost;
-    ist_kost = ist_kost;
-    programm = programm;
-    projektart = projektart;
-    portfolio = portfolio;
   }
-
-}

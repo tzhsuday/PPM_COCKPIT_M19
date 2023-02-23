@@ -5,8 +5,8 @@
    <DDLX>
     <METADATA>
      <NAME>ZC_PROJ_HEADER2</NAME>
-     <DESCRIPTION>Metadata Extension for Project Header</DESCRIPTION>
-     <MASTER_LANGUAGE>DE</MASTER_LANGUAGE>
+     <DESCRIPTION>Header Metadata</DESCRIPTION>
+     <MASTER_LANGUAGE>EN</MASTER_LANGUAGE>
     </METADATA>
    </DDLX>
   </asx:values>

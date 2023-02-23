@@ -1,6 +1,6 @@
 @AccessControl.authorizationCheck: #CHECK
 @EndUserText.label: 'Interface Entity View for Project Header'
-define root view entity ZI_PROJ_HEADER2 
+define root view entity ZI_PROJ_HEADER2  
   as select from zzppm_ewz_001 as header
   composition [0..* ] of ZI_PROJ_FINANCE2 as _Finance
   composition [0..* ] of ZI_PROJ_PHASE2 as _Phase
@@ -27,6 +27,10 @@ define root view entity ZI_PROJ_HEADER2
     programm as Programm,
     projektart as Projektart,
     portfolio as Portfolio,
+    @Semantics.systemDateTime.lastChangedAt: true
+    lastchangedat,
+    @Semantics.systemDateTime.lastChangedAt: true
+    lastchangedon,
     _Finance,
     _Phase,
     _Status,

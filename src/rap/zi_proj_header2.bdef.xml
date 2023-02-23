@@ -7,8 +7,13 @@
     <TYPE>BDEF/BDO</TYPE>
     <DESCRIPTION>Behavior Definition for Project Header</DESCRIPTION>
     <DESCRIPTION_TEXT_LIMIT>60</DESCRIPTION_TEXT_LIMIT>
-    <LANGUAGE>DE</LANGUAGE>
+    <LANGUAGE>EN</LANGUAGE>
     <LINKS>
+     <item>
+      <HREF>./zi_proj_header2/source/main/versions</HREF>
+      <REL>http://www.sap.com/adt/relations/versions</REL>
+      <TITLE>Historic versions</TITLE>
+     </item>
      <item>
       <HREF>./zi_proj_header2/source/main</HREF>
       <REL>http://www.sap.com/adt/relations/source</REL>
@@ -20,11 +25,6 @@
       <REL>http://www.sap.com/adt/relations/source</REL>
       <TYPE>text/html</TYPE>
       <TITLE>Source Content (HTML)</TITLE>
-     </item>
-     <item>
-      <HREF>./zi_proj_header2/source/main/versions</HREF>
-      <REL>http://www.sap.com/adt/relations/versions</REL>
-      <TITLE>Historic versions</TITLE>
      </item>
      <item>
       <HREF>./zi_proj_header2/objectstructure</HREF>
@@ -39,6 +39,7 @@
      </item>
     </LINKS>
     <MASTER_LANGUAGE>DE</MASTER_LANGUAGE>
+    <ABAP_LANGU_VERSION>5</ABAP_LANGU_VERSION>
     <SOURCE_URI>./zi_proj_header2/source/main</SOURCE_URI>
     <SOURCE_TYPE>ABAP_SOURCE</SOURCE_TYPE>
     <SOURCE_FIXED_POINT_ARITHMETIC>true</SOURCE_FIXED_POINT_ARITHMETIC>

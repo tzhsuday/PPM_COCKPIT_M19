@@ -1,5 +1,13 @@
-CLASS zbp_zppm_c_ewz_header DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zzppm_c_ewz_header.
+class ZBP_ZPPM_C_EWZ_HEADER definition
+  public
+  create private .
+
+public section.
+protected section.
+private section.
 ENDCLASS.
 
-CLASS zbp_zppm_c_ewz_header IMPLEMENTATION.
+
+
+CLASS ZBP_ZPPM_C_EWZ_HEADER IMPLEMENTATION.
 ENDCLASS.

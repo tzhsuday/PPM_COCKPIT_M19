@@ -1,8 +1,8 @@
 @AccessControl.authorizationCheck: #CHECK
 @EndUserText.label: 'Consumption View for Project Header'
 @Metadata.allowExtensions: true
-@OData.publish: true
-@VDM.viewType: #CONSUMPTION
+//@OData.publish: true
+//@VDM.viewType: #CONSUMPTION
 @Search.searchable: true
 define root view entity ZC_PROJ_HEADER2 as projection on ZI_PROJ_HEADER2 {
     key Guid,

@@ -1,6 +1,6 @@
 @AccessControl.authorizationCheck: #CHECK
 @EndUserText.label: 'Interface Entity View for Project Finance'
-define view entity ZI_PROJ_FINANCE2 
+define view entity ZI_PROJ_FINANCE2  
   as select from zzppm_ewz_002 
   composition [0..* ] of ZI_PROJ_INVOICE2 as _Invoice
   association to parent ZI_PROJ_HEADER2 as _Header on $projection.Headerguid = _Header.Guid
